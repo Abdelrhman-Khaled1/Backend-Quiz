@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/jwt_security?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/Backend_Quiz?createDatabaseIfNotExist=true
     username: root
     password: root
     driver_class_name: com.mysql.cj.jdbc.Driver
