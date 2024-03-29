@@ -1,5 +1,6 @@
 package com.example.security.product;
 
+import com.example.security.category.Category;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -36,6 +37,10 @@ public class Product {
     private int quantity;
     private double price;
 
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @CreatedDate
     @Column(

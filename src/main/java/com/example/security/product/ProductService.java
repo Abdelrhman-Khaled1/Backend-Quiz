@@ -1,5 +1,6 @@
 package com.example.security.product;
 
+import com.example.security.category.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +12,13 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
+    private final CategoryService categoryService;
 
     public void save(ProductRequest productRequest) {
         var product = Product.builder()
                 .name(productRequest.getName())
                 .description(productRequest.getDescription())
+                .category(categoryService.findById(productRequest.getCategoryId()))
                 .quantity(productRequest.getQuantity())
                 .price(productRequest.getPrice())
                 .build();
@@ -30,6 +33,7 @@ public class ProductService {
         Product product = productRepository.findById(id).get();
         product.setName(productRequest.getName());
         product.setDescription(productRequest.getDescription());
+        product.setCategory(categoryService.findById(productRequest.getCategoryId()));
         product.setQuantity(productRequest.getQuantity());
         product.setPrice(productRequest.getPrice());
         productRepository.save(product);
