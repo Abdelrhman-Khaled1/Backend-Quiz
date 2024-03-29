@@ -33,6 +33,10 @@ public class Product {
     @NotEmpty
     private String description;
 
+    private int quantity;
+    private double price;
+
+
     @CreatedDate
     @Column(
             nullable = false,

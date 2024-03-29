@@ -21,7 +21,7 @@ public class ProductController {
 
     @PostMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable Long id ,@RequestBody ProductRequest productRequest){
-        productService.update   (id ,productRequest);
+        productService.update(id ,productRequest);
         return ResponseEntity.accepted().build();
     }
 

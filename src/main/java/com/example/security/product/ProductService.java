@@ -16,6 +16,8 @@ public class ProductService {
         var product = Product.builder()
                 .name(productRequest.getName())
                 .description(productRequest.getDescription())
+                .quantity(productRequest.getQuantity())
+                .price(productRequest.getPrice())
                 .build();
         productRepository.save(product);
     }
@@ -28,6 +30,8 @@ public class ProductService {
         Product product = productRepository.findById(id).get();
         product.setName(productRequest.getName());
         product.setDescription(productRequest.getDescription());
+        product.setQuantity(productRequest.getQuantity());
+        product.setPrice(productRequest.getPrice());
         productRepository.save(product);
     }
 }
