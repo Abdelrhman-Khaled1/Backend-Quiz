@@ -14,13 +14,13 @@ public class ProductService {
 
     private final CategoryService categoryService;
 
-    public void save(ProductRequest productRequest) {
+    public void save(ProductDtoRequest productDtoRequest) {
         var product = Product.builder()
-                .name(productRequest.getName())
-                .description(productRequest.getDescription())
-                .category(categoryService.findById(productRequest.getCategoryId()))
-                .quantity(productRequest.getQuantity())
-                .price(productRequest.getPrice())
+                .name(productDtoRequest.getName())
+                .description(productDtoRequest.getDescription())
+                .category(categoryService.findById(productDtoRequest.getCategoryId()))
+                .quantity(productDtoRequest.getQuantity())
+                .price(productDtoRequest.getPrice())
                 .build();
         productRepository.save(product);
     }
@@ -29,13 +29,13 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void update(Long id, ProductRequest productRequest) {
+    public void update(Long id, ProductDtoRequest productDtoRequest) {
         Product product = productRepository.findById(id).get();
-        product.setName(productRequest.getName());
-        product.setDescription(productRequest.getDescription());
-        product.setCategory(categoryService.findById(productRequest.getCategoryId()));
-        product.setQuantity(productRequest.getQuantity());
-        product.setPrice(productRequest.getPrice());
+        product.setName(productDtoRequest.getName());
+        product.setDescription(productDtoRequest.getDescription());
+        product.setCategory(categoryService.findById(productDtoRequest.getCategoryId()));
+        product.setQuantity(productDtoRequest.getQuantity());
+        product.setPrice(productDtoRequest.getPrice());
         productRepository.save(product);
     }
 }

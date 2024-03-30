@@ -14,14 +14,14 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody ProductRequest productRequest){
-        productService.save(productRequest);
+    public ResponseEntity<?> save(@RequestBody ProductDtoRequest productDtoRequest){
+        productService.save(productDtoRequest);
         return ResponseEntity.accepted().build();
     }
 
     @PostMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id ,@RequestBody ProductRequest productRequest){
-        productService.update(id ,productRequest);
+    public ResponseEntity<?> update(@PathVariable Long id ,@RequestBody ProductDtoRequest productDtoRequest){
+        productService.update(id , productDtoRequest);
         return ResponseEntity.accepted().build();
     }
 
