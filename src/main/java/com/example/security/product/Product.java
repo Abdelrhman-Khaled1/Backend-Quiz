@@ -1,6 +1,7 @@
 package com.example.security.product;
 
 import com.example.security.category.Category;
+import com.example.security.sale.orderline.ProductOrder;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -12,6 +13,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Data
 @Builder
@@ -36,6 +38,10 @@ public class Product {
 
     private int quantity;
     private double price;
+
+
+    @OneToMany(mappedBy = "product")
+    private Set<ProductOrder> productOrder;
 
 
     @ManyToOne

@@ -1,5 +1,7 @@
 package com.example.security.client;
 
+import com.example.security.sale.SaleOperation;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -15,6 +17,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Data
 @Builder
@@ -44,6 +47,9 @@ public class Client {
 
     private String address;
 
+    @OneToMany(mappedBy = "client")
+    @JsonIgnore
+    private Set<SaleOperation> saleOperations;
 
     @CreatedDate
     @Column(

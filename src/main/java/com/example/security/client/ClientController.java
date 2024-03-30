@@ -1,7 +1,5 @@
 package com.example.security.client;
 
-import com.example.security.product.Product;
-import com.example.security.product.ProductRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
